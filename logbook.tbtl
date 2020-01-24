@@ -1,0 +1,7 @@
+DATABASE.logs = `
+DATE   TIME SCR PROJECT        TAGS
+------ 1500 --- !              ---
+------ 1400 --- Project2       #Tag2
+------ 1100 8-2 !              ---
+200101 1000 194 Project1       #Tag1
+`

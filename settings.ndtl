@@ -1,0 +1,20 @@
+DATABASE.settings = `
+CATEGORIES
+  PERSONAL : #FF68A3
+  PROFESSIONAL : #EBD33F
+  OTHER : #42C2EE
+PROJECTS
+  PROJECT1
+    CAT : PERSONAL
+    NAME : Display Name Personal Project
+  PROJECT2
+    CAT : PROFESSIONAL
+    NAME : Display Name Professional Project
+  PROJECT3
+    CAT : OTHER
+    NAME : Dislay Name Other Project
+SCORES
+  EFFICIENCY : #FF68A3
+  CREATIVITY : #EBD33F
+  MOOD : #42C2EE
+`

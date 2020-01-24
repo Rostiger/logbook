@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Basic Page Needs
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<meta charset="utf-8">
+	<title>Logbook</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta http-equiv="Cache-control" content="no-cache">
+
+	<!-- Mobile Specific Metas
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link rel="stylesheet" href="links/fonts.css">
+	<link rel="stylesheet" href="links/main.css">
+
+	<!-- Favicon
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link rel="icon" type="image/png" href="images/favicon.png">
+
+	<!-- Scripts -->
+	<script>
+		const DATABASE = {}
+	</script>
+  <script type='text/javascript' src='scripts/lib/helpers.js'></script>
+	<script type='text/javascript' src='scripts/lib/indental.js'></script>
+	<script type='text/javascript' src='scripts/lib/tablatal.js'></script>
+
+  <script type='text/javascript' src='database/settings.ndtl'></script>
+  <script type='text/javascript' src='database/logbook.tbtl'></script>
+  
+  <script type='text/javascript' src='scripts/interface/scores.js'></script>
+  <script type='text/javascript' src='scripts/interface/balance.js'></script>  
+	<script type='text/javascript' src='scripts/interface/summary.js'></script>
+	<script type='text/javascript' src='scripts/interface/interface.js'></script>
+
+  <script type='text/javascript' src='scripts/day.js'></script>
+  <script type='text/javascript' src='scripts/database.js'></script>
+	<script type='text/javascript' src='scripts/logbook.js'></script>
+</head>
+<body>
+	<script type='text/javascript'>
+		'use strict'
+		const logbook = new Logbook()
+		logbook.install(document.body)
+		window.addEventListener('load', () => { logbook.start(); })
+   	
+		let detectBackOrForward = function () {
+			
+		  let hashHistory = [window.location.hash]
+		  let historyLength = window.history.length
+		  
+		  return function () {
+		    let hash = window.location.hash; let length = window.history.length
+		    if (hashHistory.length && historyLength == length) {
+		      if (hashHistory[hashHistory.length - 2] == hash) {
+		        hashHistory = hashHistory.slice(0, -1)
+		      } else {
+		        hashHistory.push(hash)
+		      }
+		    } else {
+		      hashHistory.push(hash)
+		      historyLength = length
+		    }
+		    logbook.update(false)
+		  }
+		}
+
+		window.addEventListener('hashchange', detectBackOrForward())
+
+	</script>
+</body>
+</html>
