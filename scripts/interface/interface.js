@@ -287,16 +287,16 @@ function Interface () {
 
     const ruler = document.createElement('figure')
     ruler.id = 'ruler'
-    ruler.style = `width: 100%; height:16px; margin-bottom:4px; display: flex; align-items: center; border-bottom: 2px solid var(--b_low);`
 
     let h = 0
     const width = 100/24
     while (h < 24) {
       const hour = document.createElement('div')
       hour.id = `hour_${h}`
-      hour.style = `width: ${width}%; height: 100%; position: relative; display: flex; padding-left:2px; color: var(--b_low); border-left: 2px solid var(--b_low);`
+      hour.className = 'hour'
+      hour.style = `width: ${width}%;`
       const label = document.createElement('div')
-      label.style = `position: absolute; top:0; left:2px; color: var(--b_med)`
+      label.id = 'label'
       label.innerHTML =`${leadingZero(h)}`
       hour.appendChild(label)
       ruler.appendChild(hour)
@@ -306,7 +306,6 @@ function Interface () {
 
     const items = document.createElement('figure')
     items.id = 'items'
-    items.style = `width: 100%; height:16px; margin-bottom:2px; display: flex; justify-content: flex-start; background-color:var(--b_low); border-radius: var(--rounded);`
     timeLine.appendChild(items)
 
     const day = database.days[date]
@@ -326,7 +325,7 @@ function Interface () {
       const tag = entry.tags
       const duration = entry.duration
       const color = database.categories[cat].COLOR
-      items.innerHTML += `<div id="item_${t}" style="width: ${w}%; height: 100%; margin-right: 2px; background-color:${color}; border-radius: var(--rounded)" title="${project} - ${tag} - ${duration}h"></div>`
+      items.innerHTML += `<div id="item_${t}" class="item" style="width: ${w}%; background-color:${color};" title="${project} - ${tag} - ${duration}h" color="${color}"></div>`
     }
     
     const desc = document.createElement('figure')
@@ -336,12 +335,21 @@ function Interface () {
 
     // mouse events
     items.addEventListener("mouseover", function( event ) {
-      let el = event.target
+      const el = event.target
       if (el.id.slice(0,5) === 'item_') {
+        el.style.backgroundColor = 'white'
         const i = el.id.slice(5)
         const entry = day.timeline[i]
         desc.innerHTML = `<h3>${entry.project} / ${entry.duration}<span class="lc">h</span> / ${entry.tags}</h3>`
       }
-    }, false);
+    })
+
+    items.addEventListener("mouseout", function( event ) {
+      const el = event.target
+      if (el.id.slice(0,5) === 'item_') {
+        el.style.backgroundColor = el.attributes.color.nodeValue
+        desc.innerHTML = ``
+      }
+    })
   }
 }
