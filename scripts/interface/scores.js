@@ -1,37 +1,36 @@
 'use strict'
 
-function Scores () {
+function Scores () {  
+  const height = 128
+  const h = 9
+  const c = h * 0.5
+  const offset =  0.1
+	
   const scores = document.createElement('section')
   scores.id = 'scores'
-  const header = document.createElement('header')
-  const graph = document.createElement('figure')
-  graph.id = 'graph'
-  const legend = document.createElement('figure')
-  legend.id = 'legend'
-  
-	this.install = function (host) {
-	  scores.appendChild(header)
-	  scores.appendChild(graph)
-	  scores.appendChild(legend)
-	  host.appendChild(scores)
-    header.innerHTML = `<h1>Rhythm</h1>`
+
+  this.install = function (host) {
+    host.appendChild(scores)
 }
 
 	this.update = function () {
+    scores.innerHTML = ''
+    const header = document.createElement('header')
+    header.innerHTML = `<h1>Rhythm</h1>`
+    scores.appendChild(header)
+
 	  this.createGraph()
 	  this.createLegend()
 	}
 
 	this.createGraph = function () {
+    const graph = document.createElement('figure')
+    graph.id = 'graph'
+
+    this.points = []
     const dur = database.stats.filter.days
     const width = 100 / dur
-    const height = 128
-    const h = 9
-    const c = h * 0.5
-    const offset =  0.1
-    const strokeWidth = 2
     let lines = ''
-    this.points = []
     
     const bars = document.createElement('div')
     bars.id = 'bars'
@@ -69,12 +68,7 @@ function Scores () {
         }          
       }
     }
-
-    let polylines = ''
-    for (const c in this.points) {
-      polylines += `<polyline points="${this.points[c]}" style="stroke:${database.scores[c].color}" fill="none" stroke-width="${strokeWidth}" stroke-linecap="round" vector-effect="non-scaling-stroke"  />`
-    }
-
+    const polylines = this.createLines(this.points)
     const svg = document.createElement('div')
     svg.id = 'svg'
     svg.innerHTML =
@@ -85,15 +79,28 @@ function Scores () {
       </svg>`
     graph.appendChild(svg)
     graph.appendChild(bars)
+    scores.appendChild(graph)
 	}
 
+  this.createLines = function ( points ) {
+    let polylines = ''
+    for (const c in points) {
+      polylines += `<polyline points="${points[c]}" id="${database.scores[c].category}" style="stroke:${database.scores[c].color};" fill="none" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"  />`
+    }
+    return polylines    
+  }
+
 	this.createLegend = function () {
+    const legend = document.createElement('figure')
+    legend.id = 'legend'
+
     for (let i = 0; i < database.scores.length; i++) {
       const c = database.scores[i]
       
       const item = document.createElement('a')
       item.className = 'item'
-      // item.onclick = function() { logbook.interface.scores.createGraph() }
+      item.id = c.category
+      item.onclick = function() { logbook.interface.scores.toggle(c.category) }
 
       const box = document.createElement('div')
       box.className = 'box'
@@ -110,5 +117,18 @@ function Scores () {
       item.appendChild(cat)
       legend.appendChild(item)
     }
+    scores.appendChild(legend)
 	}
+
+  this.toggle = function ( category ) {
+    const rect = document.querySelector(`section#scores figure#legend a#${category} div.box svg rect`)
+    const line = document.querySelector(`figure#graph div#svg svg polyline#${category}`)
+    if (line.style.display === 'none') {
+      line.style.display = 'unset'
+      rect.style.fill = database.settings.SCORES[category]
+    } else {
+      line.style.display = 'none'
+      rect.style.fill = 'var(--b_med)'
+    }
+  }
 }
