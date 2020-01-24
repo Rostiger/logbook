@@ -89,16 +89,26 @@ function Scores () {
 
 	this.createLegend = function () {
     for (let i = 0; i < database.scores.length; i++) {
-      const cat = database.scores[i]
-      legend.innerHTML +=
-         `<div class="item">
-            <div class="box">
-              <svg width="100%" height="100%">
-                <rect x="0" y="0" width="100%" height="100%" style="fill:${cat.color}" stroke="transparent" />
-              </svg>
-            </div>
-            <div class="cat">${cat.category.toUpperCase()}</div>
-          </div>`
+      const c = database.scores[i]
+      
+      const item = document.createElement('a')
+      item.className = 'item'
+      // item.onclick = function() { logbook.interface.scores.createGraph() }
+
+      const box = document.createElement('div')
+      box.className = 'box'
+      box.innerHTML =
+         `<svg width="100%" height="100%">
+            <rect x="0" y="0" width="100%" height="100%" style="fill:${c.color}" stroke="transparent" />
+          </svg>`
+
+      const cat = document.createElement('div')
+      cat.className = 'cat'
+      cat.innerHTML = c.category.toUpperCase()
+
+      item.appendChild(box)
+      item.appendChild(cat)
+      legend.appendChild(item)
     }
 	}
 }

@@ -5,6 +5,7 @@ const dayNamesLong = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday
 function Interface () {
   this.logbook = document.createElement('div')
   this.logbook.id = 'logbook'
+  this.scores = new Scores()
 
   this.install = function (host) {
     host.appendChild(this.logbook)
@@ -25,7 +26,6 @@ function Interface () {
           this.logs.update()
         }
         if (database.scores) {
-          this.scores = new Scores()
           this.scores.install(this.logbook)
           this.scores.update()
         }

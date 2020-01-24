@@ -32,11 +32,14 @@ small { font-size: 80%; }
 #logbook #overview .bar { margin-right: 4px; }
 #logbook #overview .bar:last-child { margin:0; }
 #logbook #overview .bar svg { height: 8px; border-radius: var(--rounded) }
+
 #logbook #legend { display: flex; justify-content: flex-start; }
-#logbook #legend .item { display: flex; align-items: stretch; margin-right: 16px; }
+#logbook #legend .item { display: flex; align-items: stretch; margin-right: 8px; padding: 0 4px 0 4px; border-radius: 2px; }
+#logbook #legend a.item:hover { background-color: var(--b_low); }
 #logbook #legend .box { width: 8px; height: 8px; margin-right: 4px; }
 #logbook #legend .box svg { border-radius: var(--rounded); }
 #logbook #legend .cat { text-transform: uppercase; }
+
 #logbook #balance header { margin-bottom: 8px; }
 #logbook #balance #bars { display:flex; height: 128px; }
 #logbook #balance #bars a { display: flex; flex-direction: column; justify-content: flex-end; margin-right: 2px; background-color: var(--b_low); border-radius: var(--rounded); box-sizing: border-box; }
