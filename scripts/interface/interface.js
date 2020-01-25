@@ -5,6 +5,7 @@ const dayNamesLong = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday
 function Interface () {
   this.logbook = document.createElement('div')
   this.logbook.id = 'logbook'
+  this.scores = new Scores()
 
   this.install = function (host) {
     host.appendChild(this.logbook)
@@ -14,25 +15,11 @@ function Interface () {
     if (logbook.errors.length > 0) { this.errors(); return }
     const time = performance.now()
     this.logbook.innerHTML = ''
+
     if (page.url.length > 0) this.subPage()
-    else {
-      this.overview()
-      if (database.stats.filter.entries > 0) {
-        // only display if there are entries
-        if (database.categories) {
-          this.logs = new Balance()
-          this.logs.install(this.logbook)
-          this.logs.update()
-        }
-        if (database.scores) {
-          this.scores = new Scores()
-          this.scores.install(this.logbook)
-          this.scores.update()
-        }
-        this.projects()
-        this.tags()
-      }
-    }
+    else this.home()
+
+    // drop down data selectors
     const fromDate = document.querySelector('#fromDate')
     const toDate = document.querySelector('#toDate')
     if (fromDate) fromDate.onchange = function () { dates.from = fromDate.value; logbook.update() }    
@@ -40,69 +27,25 @@ function Interface () {
     console.info(`Logbook built interface in ${(performance.now() - time).toFixed(2)}ms.`)
   }
 
-  this.subPage = function () {
-    // OVERVIEW
-    const overview = document.createElement('section')
-    overview.id = 'overview'
-    overview.innerHTML = `<header><h3><a href="#">&lt;Logbook</a></h3></header>`
-    this.logbook.appendChild(overview)
+  this.home = function () {
+    this.overview()
     
-    this.project = database.projects[page.url]
-    this.day = database.days[page.url]
-    // Project or day doesn't exist?
-    if (!this.project && !this.day) {
-      overview.innerHTML += `<h1>404</h1>`
-      overview.innerHTML += `<p>The project or date <b>'${page.url}'</b> couldn't be found in the database.</p>`
-      return
-    }
-
-    if (this.day) {
-      overview.innerHTML += `<h1>${page.url}</h1>`
-      const statsEl = document.createElement('figure')
-      statsEl.id = 'stats'
-      overview.appendChild(statsEl)
-      statsEl.innerHTML += `<h3>${dayNamesLong[toTimeStamp(page.url).getDay()]}</h3>`
-      statsEl.innerHTML += `<h3>${this.day.trackedHours}<span class="lc">h</span> / ${this.day.entries.length}<span class="lc">e</span></h3>`
-      const summary = new Summary(overview)
-      summary.update(this.day.categories)
-      this.timeLine(overview, page.url)
-    } else {
-      const entries = this.project.count
-      let stats = 'This project has no entries.'
-      if (entries > 0) {
-        stats = `<figure id="stats">`
-        stats += this.datepickers()
-        stats += `
-            <h3>${this.project.hours}<span class="lc">h</span> / ${this.project.count}<span class="lc">e</span></h3>
-          </figure>
-         `
+    if (database.stats.filter.entries > 0) {
+      // only display if there are entries
+      if (database.categories) {
+        // build balance UI
+        this.logs = new Balance()
+        this.logs.install(this.logbook)
+        this.logs.update()
       }
-      overview.innerHTML += 
-       `<h1>${this.project.NAME}</h1>
-       ${stats}      
-       `
-      // ENTRIES
-      this.logs = new Balance()
-      this.logs.install(this.logbook)
-      this.logs.update(page.url)
-
-      // TAGS
-      if (entries > 0) {
-        const tags = document.createElement('section')
-        tags.id = 'overview'
-
-        const tagList = this.tagList(this.project)
-        if (tagList.length < 1) return
-        tags.innerHTML = 
-         `<section id="tags">
-            <h1>Tags</h1>
-            <figure>
-              ${tagList}
-            </figure>
-          </section>
-        `
-        this.logbook.appendChild(tags)
+      if (database.scores) {
+        // build score graph
+        this.scores.install(this.logbook)
+        this.scores.update()
       }
+      // build projects list and tags
+      this.projects()
+      this.tags()
     }
   }
 
@@ -132,7 +75,73 @@ function Interface () {
     }
   }
 
+  this.subPage = function () {
+    // OVERVIEW
+    const overview = document.createElement('section')
+    overview.id = 'overview'
+    overview.innerHTML = `<header><h3><a href="#">&lt;Logbook</a></h3></header>`
+    this.logbook.appendChild(overview)
+    
+    this.p = database.projects[page.url]
+    this.d = database.days[page.url]
+    // Project or day doesn't exist?
+    if (!this.p && !this.d) {
+      overview.innerHTML += `<h1>404</h1>`
+      overview.innerHTML += `<p>The project or date <b>'${page.url}'</b> couldn't be found in the database.</p>`
+      return
+    }
+
+    if (this.d) this.dailyDetails(this.d)
+    else this.projectDetails()
+  }
+
+  this.dailyDetails = function (day) {
+    this.day = day
+    overview.innerHTML += `<h1>${page.url}</h1>`
+    const statsEl = document.createElement('figure')
+    statsEl.id = 'stats'
+    overview.appendChild(statsEl)
+    statsEl.innerHTML += `<h3>${dayNamesLong[toTimeStamp(page.url).getDay()]}</h3>`
+    statsEl.innerHTML += `<h3>${this.day.trackedHours}<span class="lc">h</span> / ${this.day.entries.length}<span class="lc">e</span></h3>`
+    
+    const summary = new Summary(overview)
+    summary.update(this.day.categories)
+    this.timeLine(overview, page.url)
+
+    // const dailyScore = new Scores()
+    // dailyScore.install(this.logbook)
+
+    this.projects()
+  }
+
+  this.projectDetails = function () {
+    this.project = database.projects[page.url]
+    const entries = this.project.count
+    let stats = 'This project has no entries.'
+    if (entries > 0) {
+      stats = `<figure id="stats">`
+      stats += this.datepickers()
+      stats += `
+          <h3>${this.project.hours}<span class="lc">h</span> / ${this.project.count}<span class="lc">e</span></h3>
+        </figure>
+       `
+    }
+    overview.innerHTML += 
+     `<h1>${this.project.NAME}</h1>
+     ${stats}      
+     `
+    // ENTRIES
+    this.logs = new Balance()
+    this.logs.install(this.logbook)
+    this.logs.update(page.url)
+
+    // TAGS
+    this.tags()
+  }
+
   this.projects = function () {
+    this.isHome = page.url.length === 0 ? true : false
+    this.database = this.isHome ? database.projects : database.days[page.url].projects
     const projects = document.createElement('section')
     projects.id = 'projects'
     this.logbook.appendChild(projects)
@@ -152,9 +161,9 @@ function Interface () {
 
     const tmp = []
     // create a temp array for sorting projects by hours
-    for (const id in database.projects) {
-      if (!database.projects[id].hours) continue
-      const project = database.projects[id]
+    for (const id in this.database) {
+      if (!this.database[id].hours) continue
+      const project = this.database[id]
       project.name = id
       tmp.push(project)
     }
@@ -162,10 +171,11 @@ function Interface () {
     // create html from sorted projects
     for (const id in tmp) {
       const project = tmp[id]
-      const data = database.projects[project.name]
+      const data = this.database[project.name]
       const el = document.createElement('figure')
       el.id = project.name
-      const percent = (project.hours * 100 / database.stats.filter.hours).toFixed(1)
+      const hours = this.isHome ? database.stats.filter.hours : 24
+      const percent = (project.hours * 100 / hours).toFixed(1)
       el.innerHTML += 
        `<h3><a href="#${project.name.toLowerCase()}">${data.NAME}</a></h3>
         <h4>${project.hours}h / ${project.count}e / ${percent}%</h4>`
@@ -175,7 +185,10 @@ function Interface () {
   }
 
   this.tags = function () {
-    const tagList = this.tagList()
+    this.isHome = page.url.length === 0 ? true : false
+    this.project = this.isHome ? database : database.projects[page.url]
+
+    const tagList = this.tagList(this.project)
     if (tagList.length < 1) return
     const section = document.createElement('section')
     section.id = 'tags'
@@ -192,8 +205,6 @@ function Interface () {
   }
 
   this.tagList = function (project) {
-    this.project = project ? project : database
-
     const tmp = []
     // create a temp array for sorting tags by hours
     for (const id in this.project.tags) {
@@ -287,16 +298,16 @@ function Interface () {
 
     const ruler = document.createElement('figure')
     ruler.id = 'ruler'
-    ruler.style = `width: 100%; height:16px; margin-bottom:4px; display: flex; align-items: center; border-bottom: 2px solid var(--b_low);`
 
     let h = 0
     const width = 100/24
     while (h < 24) {
       const hour = document.createElement('div')
       hour.id = `hour_${h}`
-      hour.style = `width: ${width}%; height: 100%; position: relative; display: flex; padding-left:2px; color: var(--b_low); border-left: 2px solid var(--b_low);`
+      hour.className = 'hour'
+      hour.style = `width: ${width}%;`
       const label = document.createElement('div')
-      label.style = `position: absolute; top:0; left:2px; color: var(--b_med)`
+      label.id = 'label'
       label.innerHTML =`${leadingZero(h)}`
       hour.appendChild(label)
       ruler.appendChild(hour)
@@ -306,7 +317,6 @@ function Interface () {
 
     const items = document.createElement('figure')
     items.id = 'items'
-    items.style = `width: 100%; height:16px; margin-bottom:2px; display: flex; justify-content: flex-start; background-color:var(--b_low); border-radius: var(--rounded);`
     timeLine.appendChild(items)
 
     const day = database.days[date]
@@ -326,22 +336,32 @@ function Interface () {
       const tag = entry.tags
       const duration = entry.duration
       const color = database.categories[cat].COLOR
-      items.innerHTML += `<div id="item_${t}" style="width: ${w}%; height: 100%; margin-right: 2px; background-color:${color}; border-radius: var(--rounded)" title="${project} - ${tag} - ${duration}h"></div>`
+      items.innerHTML += `<div id="item_${t}" class="item" style="width: ${w}%; background-color:${color};" title="${project}: ${tag} / ${duration}h" color="${color}"></div>`
     }
     
     const desc = document.createElement('figure')
     desc.id = 'desc'
     desc.style = 'width: 100%; display: flex; justify-content: end;'
+    desc.innerHTML = `<h3>&nbsp;</h3>`
     timeLine.appendChild(desc)
 
     // mouse events
     items.addEventListener("mouseover", function( event ) {
-      let el = event.target
+      const el = event.target
       if (el.id.slice(0,5) === 'item_') {
+        el.style.backgroundColor = 'white'
         const i = el.id.slice(5)
         const entry = day.timeline[i]
-        desc.innerHTML = `<h3>${entry.project} / ${entry.duration}<span class="lc">h</span> / ${entry.tags}</h3>`
+        desc.innerHTML = `<h3>${entry.project}: ${entry.tags} / ${entry.duration}<span class="lc">h</span></h3>`
       }
-    }, false);
+    })
+
+    items.addEventListener("mouseout", function( event ) {
+      const el = event.target
+      if (el.id.slice(0,5) === 'item_') {
+        el.style.backgroundColor = el.attributes.color.nodeValue
+        desc.innerHTML = `<h3>&nbsp;</h3>`
+      }
+    })
   }
 }
