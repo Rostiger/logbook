@@ -101,7 +101,7 @@ function Day (date) {
 		if (prj) {
 			const cat = prj.CAT
 			// add hours to project
-			if (!this.projects[project]) this.projects[project] = { hours : 0, count: 0, tags : {} }
+			if (!this.projects[project]) this.projects[project] = { hours : 0, count: 0, tags : {}, NAME : project, CAT : cat,  }
 			this.projects[project].hours += hours
 			this.projects[project].count += 1
 			// add tag
