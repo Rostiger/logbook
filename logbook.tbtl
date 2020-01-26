@@ -7,8 +7,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 323 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 129 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200130 0000 --- Sleep          --- 
+200130 0700 543 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 513 Personal       #Read Book XYZ
@@ -16,8 +15,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 964 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 523 Household      #Routines
-200129 0000 642 Sleep          --- 
+200129 0700 523 Household      #Routines
 ------ 2100 121 Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -25,8 +23,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200128 0000 --- Sleep          --- 
+200128 0700 543 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -34,8 +31,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200127 0000 --- Sleep          --- 
+200127 0700 543 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -43,8 +39,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 754 Household      #Routines
-200126 0000 --- Sleep          --- 
+200126 0700 754 Household      #Routines
 ------ 2100 422 Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -52,8 +47,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 753 Household      #Routines
-200125 0000 --- Sleep          --- 
+200125 0700 753 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 2-- Personal       #Idle
 ------ 1730 274 Personal       #Read Book XYZ
@@ -61,8 +55,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 543 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200124 0000 --- Sleep          --- 
+200124 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 455 Personal       #Read Book XYZ
@@ -70,8 +63,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 543 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200123 0000 --- Sleep          --- 
+200123 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 455 Personal       #Read Book XYZ
@@ -79,8 +71,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 754 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200122 0000 422 Sleep          --- 
+200122 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 465 Personal       #Read Book XYZ
@@ -88,8 +79,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 753 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200121 0000 --- Sleep          --- 
+200121 0700 --- Household      #Routines
 ------ 2100 2-- Sleep          ---
 ------ 1900 274 Personal       #Idle
 ------ 1730 255 Personal       #Read Book XYZ
@@ -97,8 +87,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200120 0000 --- Sleep          --- 
+200120 0700 543 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -106,8 +95,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 543 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200119 0000 --- Sleep          --- 
+200119 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 455 Personal       #Read Book XYZ
@@ -115,8 +103,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 543 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200118 0000 --- Sleep          --- 
+200118 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 455 Personal       #Read Book XYZ
@@ -124,8 +111,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 423 Company        #Commute
 ------ 0730 754 Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200117 0000 422 Sleep          --- 
+200117 0700 --- Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 574 Personal       #Idle
 ------ 1730 465 Personal       #Read Book XYZ
@@ -133,8 +119,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 423 Company        #Code Working on XYZ
 ------ 0830 543 Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200116 0000 --- Sleep          --- 
+200116 0700 --- Household      #Routines
 ------ 2100 574 Sleep          ---
 ------ 1900 455 Personal       #Idle
 ------ 1730 324 Personal       #Read Book XYZ
@@ -142,8 +127,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 423 Company        #Code Working on XYZ
 ------ 0830 543 Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200115 0000 --- Sleep          --- 
+200115 0700 --- Household      #Routines
 ------ 2100 574 Sleep          ---
 ------ 1900 455 Personal       #Idle
 ------ 1730 324 Personal       #Read Book XYZ
@@ -151,8 +135,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 543 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200114 0000 574 Sleep          --- 
+200114 0700 --- Household      #Routines
 ------ 2100 455 Sleep          ---
 ------ 1900 324 Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
@@ -160,8 +143,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 543 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200113 0000 574 Sleep          --- 
+200113 0700 --- Household      #Routines
 ------ 2100 455 Sleep          ---
 ------ 1900 324 Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
@@ -169,8 +151,7 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 543 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200112 0000 574 Sleep          --- 
+200112 0700 --- Household      #Routines
 ------ 2100 455 Sleep          ---
 ------ 1900 324 Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
@@ -178,44 +159,39 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 423 Company        #Code Working on XYZ
 ------ 0830 543 Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 --- Household      #Routines
-200111 0000 --- Sleep          --- 
------- 2100 574 Sleep          ---
+200111 0700 --- Household      #Routines
+------ 2300 574 Sleep          ---
 ------ 1900 455 Personal       #Idle
 ------ 1730 324 Personal       #Read Book XYZ
 ------ 1700 --- Personal       #Commute Home
------- 0900 423 Company        #Code Working on XYZ
+------ 0930 423 Company        #Code Working on XYZ
 ------ 0830 543 Company        #Commute
 ------ 0730 --- Cooking        #Breakfast Porrige
------- 0700 423 Household      #Routines
-200110 0000 543 Sleep          --- 
------- 2100 423 Sleep          ---
+200110 0700 423 Household      #Routines
+------ 2330 423 Sleep          ---
 ------ 1900 543 Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
------- 1700 --- Personal       #Commute Home
+------ 1400 --- Personal       #Commute Home
 ------ 0900 --- Company        #Code Working on XYZ
 ------ 0830 574 Company        #Commute
 ------ 0730 455 Cooking        #Breakfast Porrige
------- 0700 324 Household      #Routines
-200109 0000 --- Sleep          --- 
------- 2100 423 Sleep          ---
+200109 0700 324 Household      #Routines
+------ 2200 423 Sleep          ---
 ------ 1900 543 Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
------- 1700 --- Personal       #Commute Home
------- 0900 --- Company        #Code Working on XYZ
+------ 1200 --- Personal       #Commute Home
+------ 0930 --- Company        #Code Working on XYZ
 ------ 0830 574 Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200108 0000 --- Sleep          --- 
------- 2100 --- Sleep          ---
+200108 0700 543 Household      #Routines
+------ 2130 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
------- 1700 455 Personal       #Commute Home
+------ 1730 455 Personal       #Commute Home
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200107 0000 423 Sleep          --- 
+200107 0700 543 Household      #Routines
 ------ 2100 543 Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 --- Personal       #Read Book XYZ
@@ -223,8 +199,15 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 574 Company        #Code Working on XYZ
 ------ 0830 455 Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200106 0000 --- Sleep          --- 
+200106 0700 543 Household      #Routines
+------ 2130 --- Sleep          ---
+------ 1900 --- Personal       #Idle
+------ 1730 574 Personal       #Read Book XYZ
+------ 1800 455 Personal       #Commute Home
+------ 0900 324 Company        #Code Working on XYZ
+------ 0830 --- Company        #Commute
+------ 0730 423 Cooking        #Breakfast Porrige
+200105 0700 543 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
@@ -232,35 +215,23 @@ DATE   TIME SCR PROJECT        TAGS
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 543 Household      #Routines
-200105 0000 --- Sleep          --- 
------- 2100 --- Sleep          ---
------- 1900 --- Personal       #Idle
------- 1730 574 Personal       #Read Book XYZ
------- 1700 455 Personal       #Commute Home
------- 0900 324 Company        #Code Working on XYZ
------- 0830 --- Company        #Commute
------- 0730 423 Cooking        #Breakfast Porrige
------- 0700 754 Household      #Routines
-200104 0000 --- Sleep          --- 
+200104 0700 754 Household      #Routines
 ------ 2100 422 Sleep          ---
------- 1900 --- Personal       #Idle
+------ 1930 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
 ------ 1700 465 Personal       #Commute Home
 ------ 0900 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 423 Cooking        #Breakfast Porrige
------- 0700 753 Household      #Routines
-200103 0000 --- Sleep          --- 
+200103 0700 753 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 2-- Personal       #Idle
 ------ 1730 274 Personal       #Read Book XYZ
 ------ 1700 255 Personal       #Commute Home
------- 0900 324 Company        #Code Working on XYZ
+------ 0930 324 Company        #Code Working on XYZ
 ------ 0830 --- Company        #Commute
 ------ 0730 426 Cooking        #Breakfast Porrige
------- 0700 547 Household      #Routines
-200102 0000 --- Sleep          --- 
+200102 0700 547 Household      #Routines
 ------ 2100 --- Sleep          ---
 ------ 1900 --- Personal       #Idle
 ------ 1730 574 Personal       #Read Book XYZ
