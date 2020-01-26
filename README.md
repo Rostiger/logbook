@@ -2,14 +2,13 @@
 [Logbook](https://rostiger.github.io/logbook/) is a personal tracking tool I use to document and analyse how I spend my time.
 
 **Logbook** is a subset of **Anchors**, an ecosystem that hosts an array of personal tools, such as [Chronicle](https://github.com/Rostiger/chronicle) and Lexicon.
-Anchors was born from the desire to better know and understand myself and gather data on where I come from, where I am and where I am going.
-It is an attempt to store and visualize this data in a single place where it is easily accessible and maintainable.
 
-Logbook is also inspired by the many incredible creatives of the Merveilles community who create and use their own time tracking tools.
+Anchors was born from the desire to better know and understand myself and gather data on where I come from, where I am and where I am going. It is an attempt to store and visualize this data in a single place where it is easily accessible and maintainable.
 
-<img width="240" src="https://raw.githubusercontent.com/Rostiger/logbook/master/logbook.png" />
+Logbook is inspired by members of the [Merveilles](https://merveilles.town) community who create and use their own time tracking tools.
 
-# Features
+# Screenshots
+<img src="https://raw.githubusercontent.com/Rostiger/logbook/master/logbook.png" />
 <img src="https://raw.githubusercontent.com/Rostiger/logbook/master/filtering.gif" />
 <img src="https://raw.githubusercontent.com/Rostiger/logbook/master/scores.gif" />
 
