@@ -6,6 +6,7 @@ function Interface () {
   this.logbook = document.createElement('div')
   this.logbook.id = 'logbook'
   this.scores = new Scores()
+  this.isHome = true
 
   this.install = function (host) {
     host.appendChild(this.logbook)
@@ -15,9 +16,10 @@ function Interface () {
     if (logbook.errors.length > 0) { this.errors(); return }
     const time = performance.now()
     this.logbook.innerHTML = ''
+    this.isHome = page.url.length === 0 ? true : false
 
-    if (page.url.length > 0) this.subPage()
-    else this.home()
+    if (this.isHome) this.home()
+    else this.subPage()
 
     // drop down data selectors
     const fromDate = document.querySelector('#fromDate')
@@ -108,8 +110,9 @@ function Interface () {
     summary.update(this.day.categories)
     this.timeLine(overview, page.url)
 
-    // const dailyScore = new Scores()
-    // dailyScore.install(this.logbook)
+    const dailyScore = new Scores()
+    dailyScore.install(this.logbook)
+    dailyScore.update()
 
     this.projects()
   }
@@ -140,7 +143,6 @@ function Interface () {
   }
 
   this.projects = function () {
-    this.isHome = page.url.length === 0 ? true : false
     this.database = this.isHome ? database.projects : database.days[page.url].projects
     const projects = document.createElement('section')
     projects.id = 'projects'
@@ -202,8 +204,6 @@ function Interface () {
   }
 
   this.tagList = function () {
-
-    this.isHome = page.url.length === 0 ? true : false
     this.data = this.isHome ? database : database.projects[page.url]
 
     const tmp = []

@@ -5,6 +5,7 @@ function Scores () {
   const h = 9
   const c = h * 0.5
   const offset =  0.1
+  this.isHome = true
 	
   const scores = document.createElement('section')
   scores.id = 'scores'
@@ -14,6 +15,7 @@ function Scores () {
 }
 
 	this.update = function () {
+    this.isHome = logbook.interface.isHome
     scores.innerHTML = ''
     const header = document.createElement('header')
     header.innerHTML = `<h1>Rhythm</h1>`
@@ -27,13 +29,14 @@ function Scores () {
     const graph = document.createElement('figure')
     graph.id = 'graph'
 
-    this.points = []
-    const dur = database.stats.filter.days
+    const dur = this.isHome ? database.stats.filter.days : 24
     const width = 100 / dur
     let lines = ''
     
     const bars = document.createElement('div')
     bars.id = 'bars'
+
+    this.points = []
 
     const d = toTimeStamp(database.stats.filter.lastEntry)
     for (let i = 0; i <= dur; i++) {
@@ -53,19 +56,29 @@ function Scores () {
       
       // add segmentation
       lines += `<line x1="${x}" y1="0" x2="${x}" y2="${h}" vector-effect="non-scaling-stroke" style="stroke: var(--background)" fill="none" stroke-linecap="butt" stroke-width="2" />`
-      
       // get scores as position data
       for (const s in database.scores) {
         const cat = database.scores[s].category
-        if (!this.points[s]) this.points[s] = '' 
-        if (database.days[date] && database.days[date]) {
-          if (!database.days[date].scores.scores[cat]) continue
-          const y = c - database.days[date].scores.average[cat]
-          this.points[s] += `${x} ${y} `
-          bar.title += `\n${cat}: ${database.days[date].scores.average[cat]} / ${database.days[date].scores.scores[cat].length}e`
+        if (!this.points[s]) this.points[s] = ''
+        if (this.isHome) {
+          // average scores over the filtered amount of days
+          if (database.days[date]) {
+            if (!database.days[date].scores.scores[cat]) continue
+            const y = c - database.days[date].scores.average[cat]
+            this.points[s] += `${x} ${y} `
+            bar.title += `\n${cat}: ${database.days[date].scores.average[cat]} / ${database.days[date].scores.scores[cat].length}e`
+          } else {
+            this.points[s] += `${x} ${c + offset * s} `
+          }     
         } else {
-          this.points[s] += `${x} ${c + offset * s} `
-        }          
+          // scores of this day
+          this.day = database.days[page.url]
+          if (this.day) {
+            if (!this.day.scores.scores[cat]) continue
+            // const y = c - this.day.scores.average[cat]
+          }
+          // console.log(this.day)
+        }     
       }
     }
     const polylines = this.createLines(this.points)
