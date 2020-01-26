@@ -61,6 +61,7 @@ function Balance () {
           const percent = parseFloat((hours * 100 / 24).toFixed(1))
           const color = database.categories[cat].COLOR
           bar.innerHTML = this.addSegment(percent, color)
+          bar.title += ` / ${dayNames[toTimeStamp(date).getDay()]} / ${database.days[date].projects[project].hours}h / ${database.days[date].projects[project].count}e`
         } else {
           // get categories
           for (const c in cats) {
@@ -70,8 +71,8 @@ function Balance () {
               title[c] = `\n${c}: ${cat.percentage}% / ${cat.hours}h`
             }
           }
+          bar.title += ` / ${dayNames[toTimeStamp(date).getDay()]} / ${database.days[date].entries.length}e`
         }
-        bar.title += ` / ${dayNames[toTimeStamp(date).getDay()]} / ${database.days[date].entries.length}e`
         for (const t in title) bar.title += title[t]
       }
 
