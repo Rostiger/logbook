@@ -185,10 +185,7 @@ function Interface () {
   }
 
   this.tags = function () {
-    this.isHome = page.url.length === 0 ? true : false
-    this.project = this.isHome ? database : database.projects[page.url]
-
-    const tagList = this.tagList(this.project)
+    const tagList = this.tagList(this.data)
     if (tagList.length < 1) return
     const section = document.createElement('section')
     section.id = 'tags'
@@ -204,31 +201,34 @@ function Interface () {
     `
   }
 
-  this.tagList = function (project) {
+  this.tagList = function () {
+
+    this.isHome = page.url.length === 0 ? true : false
+    this.data = this.isHome ? database : database.projects[page.url]
+
     const tmp = []
     // create a temp array for sorting tags by hours
-    for (const id in this.project.tags) {
-      const tag = this.project.tags[id]
+    for (const id in this.data.tags) {
+      const tag = this.data.tags[id]
       if (tag.hours) {
         tmp.push(tag)
         tmp[tmp.length - 1].name = id
       }
     }
 
-    const untagged = {}
-    if (project) {
-      untagged.name = "untagged"
-      untagged.count = this.project.count - this.project.taggedEntries
-      untagged.hours = this.project.hours - this.project.taggedHours 
-    }
+    // const untagged = {}
+    // if ()
+    // untagged.name = "untagged"
+    // untagged.count = this.data.count - this.data.taggedEntries
+    // untagged.hours = this.data.hours - this.data.taggedHours 
 
     tmp.sort(this.sortByHours)
-    if (untagged.count > 0) tmp.push(untagged)
+    // if (untagged.count > 0) tmp.push(untagged)
 
     let tagList = ''
     for (const tag in tmp) {
       const w = Math.round(tmp[tag].hours * 100 / tmp[0].hours)
-      const c = project ? database.categories[project.CAT].COLOR : "#FF68A3"
+      const c = this.isHome ? "#FF68A3" : database.categories[this.data.CAT].COLOR
       tagList += 
        `<figure id="stats" style="margin-top:8px;">
           <h3>${tmp[tag].name}</h3>
