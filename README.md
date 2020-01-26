@@ -8,9 +8,7 @@ Anchors was born from the desire to better know and understand myself and gather
 Logbook is inspired by members of the [Merveilles](https://merveilles.town) community who create and use their own time tracking tools.
 
 # Screenshots
-<img src="https://raw.githubusercontent.com/Rostiger/logbook/master/logbook.png" />
-<img src="https://raw.githubusercontent.com/Rostiger/logbook/master/filtering.gif" />
-<img src="https://raw.githubusercontent.com/Rostiger/logbook/master/scores.gif" />
+<img src="https://raw.githubusercontent.com/Rostiger/logbook/master/filtering.gif" /> <img src="https://raw.githubusercontent.com/Rostiger/logbook/master/scores.gif" />
 
 # Usage
 Logbook creates an interface from text based data using [neauoire](https://github.com/neauoire)'s _Tablatal_ and  _Indental_ formats and parsers.
