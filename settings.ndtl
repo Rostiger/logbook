@@ -1,20 +1,35 @@
 DATABASE.settings = `
 CATEGORIES
-  PERSONAL : #FF68A3
-  PROFESSIONAL : #EBD33F
-  OTHER : #42C2EE
+  WORK : #FF68A3
+  LIFE : #EBD33F
+  SLEEP : #42C2EE
 PROJECTS
-  PROJECT1
-    CAT : PERSONAL
-    NAME : Display Name Personal Project
-  PROJECT2
-    CAT : PROFESSIONAL
-    NAME : Display Name Professional Project
-  PROJECT3
-    CAT : OTHER
-    NAME : Dislay Name Other Project
+  Company
+    CAT : WORK
+    NAME : Company
+  TimeTracker
+    CAT : WORK
+    NAME : Time Tracker
+  Website
+    CAT : WORK
+    NAME : Website
+  Household
+    CAT : LIFE
+    NAME : Household
+  Cooking
+    CAT : LIFE
+    NAME : Cooking
+  Personal
+    CAT : LIFE
+    NAME : Personal
+  Family
+    CAT : LIFE
+    NAME : Family
+  SLEEP
+    CAT : SLEEP
+    NAME : Sleep
 SCORES
-  EFFICIENCY : #FF68A3
-  CREATIVITY : #EBD33F
+  BODY : #FF68A3
+  MIND : #EBD33F
   MOOD : #42C2EE
 `
