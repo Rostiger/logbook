@@ -32,7 +32,7 @@ function Day (date) {
 				this.addHours(hours, project, tags)
 				this.addTimeLineEntry(time, hours, project, tags)
 			}
-			if (score && database.scores) this.scores.add(score)
+			if (score && database.scores) this.scores.add(score, time)
 
 			// calculate hours and add the to the project
 			if (e == this.entries.length - 1) {
@@ -70,13 +70,16 @@ function Day (date) {
 	this.scores = {
 		scores : {},
 		average : {},
-		add : function (score) {
+		add : function (score, time) {
 			for (let i = 0; i < score.length; i++) {
 				const s = parseInt(score[i])
 				if (!database.scores[i]) { console.warn(`Can't map score to category. Add more categories to scores.ndtl`); continue }
 				const cat = database.scores[i].category
 				if (!this.scores[cat]) this.scores[cat] = []
-				if (!isNaN(s)) this.scores[cat].push(10 - s - 5)
+				if (!isNaN(s)) {
+					const entry = { score: 10 - s - 5, time : time }
+					this.scores[cat].push(entry)
+				}
 			}
 		},
 		getAverages : function () {
@@ -89,7 +92,7 @@ function Day (date) {
 		getSum : function (array) {
 			let sum = 0 
 			let i = array.length
-			while (i--) sum += array[i]
+			while (i--) sum += array[i].score
 			return sum
 		}
 	}
