@@ -27,20 +27,20 @@
 	<script>
 		const DATABASE = {}
 	</script>
-  <script type='text/javascript' src='scripts/lib/helpers.js'></script>
+	<script type='text/javascript' src='scripts/lib/helpers.js'></script>
 	<script type='text/javascript' src='scripts/lib/indental.js'></script>
 	<script type='text/javascript' src='scripts/lib/tablatal.js'></script>
 
-  <script type='text/javascript' src='settings.ndtl'></script>
-  <script type='text/javascript' src='logbook.tbtl'></script>
-  
-  <script type='text/javascript' src='scripts/interface/scores.js'></script>
-  <script type='text/javascript' src='scripts/interface/balance.js'></script>  
+	<script type='text/javascript' src='../assistant/database/settings.ndtl'></script>
+	<script type='text/javascript' src='../assistant/database/logbook.tbtl'></script>
+	
+	<script type='text/javascript' src='scripts/interface/scores.js'></script>
+	<script type='text/javascript' src='scripts/interface/balance.js'></script>  
 	<script type='text/javascript' src='scripts/interface/summary.js'></script>
 	<script type='text/javascript' src='scripts/interface/interface.js'></script>
 
-  <script type='text/javascript' src='scripts/day.js'></script>
-  <script type='text/javascript' src='scripts/database.js'></script>
+	<script type='text/javascript' src='scripts/day.js'></script>
+	<script type='text/javascript' src='scripts/database.js'></script>
 	<script type='text/javascript' src='scripts/logbook.js'></script>
 </head>
 <body>
@@ -49,26 +49,26 @@
 		const logbook = new Logbook()
 		logbook.install(document.body)
 		window.addEventListener('load', () => { logbook.start(); })
-   	
+		
 		let detectBackOrForward = function () {
 			
-		  let hashHistory = [window.location.hash]
-		  let historyLength = window.history.length
-		  
-		  return function () {
-		    let hash = window.location.hash; let length = window.history.length
-		    if (hashHistory.length && historyLength == length) {
-		      if (hashHistory[hashHistory.length - 2] == hash) {
-		        hashHistory = hashHistory.slice(0, -1)
-		      } else {
-		        hashHistory.push(hash)
-		      }
-		    } else {
-		      hashHistory.push(hash)
-		      historyLength = length
-		    }
-		    logbook.update(false)
-		  }
+			let hashHistory = [window.location.hash]
+			let historyLength = window.history.length
+			
+			return function () {
+				let hash = window.location.hash; let length = window.history.length
+				if (hashHistory.length && historyLength == length) {
+					if (hashHistory[hashHistory.length - 2] == hash) {
+						hashHistory = hashHistory.slice(0, -1)
+					} else {
+						hashHistory.push(hash)
+					}
+				} else {
+					hashHistory.push(hash)
+					historyLength = length
+				}
+				logbook.update(false)
+			}
 		}
 
 		window.addEventListener('hashchange', detectBackOrForward())
