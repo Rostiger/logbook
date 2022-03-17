@@ -20,8 +20,9 @@ function Summary (host) {
       if (!cat) continue
       const color = database.categories[c].COLOR
       const width = cat.percentage === 0 ? 1 : cat.percentage
+      const display = cat.percentage === 0 ? "none" : "block"
       bars.innerHTML +=
-       `<div class="bar" style="width:${width}%">
+       `<div class="bar" style="width:${width}%; display:${display}">
           <div style="color:${color};">${cat.percentage}%</div>
           <svg width="100%" height="100%">
             <rect x="0" y="0" width="100%" height="100%" fill="${color}" stroke="transparent" />
